@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace TjuvPolis2
 {
@@ -21,45 +20,28 @@ namespace TjuvPolis2
     class Citizen : Person
     {
         public List<Item> Belongings { get; set; }
-        public Citizen(int xPosition, int yPosition, int xDirection, int yDirection) :
-            base (xPosition, yPosition, xDirection, yDirection)
+        public Citizen(int xPosition, int yPosition, int xDirection, int yDirection, List<Item> belongings) :
+            base(xPosition, yPosition, xDirection, yDirection)
         {
-            Belongings = new List<Item>();
-            Belongings.Add(new Item("Keys", 1));
-            Belongings.Add(new Item("Telephone", 1));
-            Belongings.Add(new Item("Money", 1));
-            Belongings.Add(new Item("Watch", 1));
+            Belongings = belongings;
         }
     }
     class Police : Person
     {
         public List<Item> ConfiscatedItems { get; set; }
-        public Police(int xPosition, int yPosition, int xDirection, int yDirection) :
-            base (xPosition, yPosition, xDirection, yDirection)
+        public Police(int xPosition, int yPosition, int xDirection, int yDirection, List<Item> confiscatedItems) :
+            base(xPosition, yPosition, xDirection, yDirection)
         {
-            ConfiscatedItems = new List<Item>
-            {
-                new Item("Keys", 0),
-                new Item("Telephone", 0),
-                new Item("Money", 0),
-                new Item("Watch", 0)
-            };
-
+            ConfiscatedItems = confiscatedItems;
         }
     }
     class Thief : Person
     {
         public List<Item> Swag { get; set; }
-        public Thief(int xPosition, int yPosition, int xDirection, int yDirection) :
+        public Thief(int xPosition, int yPosition, int xDirection, int yDirection, List<Item> swag) :
             base(xPosition, yPosition, xDirection, yDirection)
         {
-            Swag = new List<Item>
-            {
-                new Item("Keys", 0),
-                new Item("Telephone", 0),
-                new Item("Money", 0),
-                new Item("Watch", 0)
-            };
+            Swag = swag;
         }
     }
 }

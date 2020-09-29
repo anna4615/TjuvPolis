@@ -6,8 +6,7 @@ namespace TjuvPolis2
 {
     class CtrlMethods
     {
-        //Skapade klass för metoder som inte ingår i spelet men är bra att ha för att kolla vad som har hänt.
-        //Är det vettigt att ha en klass med bara metoder eller finns det ett annat sätt att gruppera metoder?
+        //Flytta till klass, använd polymorfism
         
         public static string PrintCitizen(Citizen c)
         {
@@ -17,6 +16,28 @@ namespace TjuvPolis2
             for (int i = 0; i < c.Belongings.Count; i++)
             {
                 s += $"{c.Belongings[i]}, ";
+            }
+            return s;
+        }
+        public static string PrintPolice(Police p)
+        {
+            string s = $"xdir: {p.XDirection}, ydir: {p.YDirection}, " +
+                    $"xpos: {p.XPosition}, ypos: {p.YPosition}, ";
+
+            for (int i = 0; i < p.ConfiscatedItems.Count; i++)
+            {
+                s += $"{p.ConfiscatedItems[i]}, ";
+            }
+            return s;
+        }
+        public static string PrintThief(Thief t)
+        {
+            string s = $"xdir: {t.XDirection}, ydir: {t.YDirection}, " +
+                    $"xpos: {t.XPosition}, ypos: {t.YPosition}, ";
+
+            for (int i = 0; i < t.Swag.Count; i++)
+            {
+                s += $"{t.Swag[i]}, ";
             }
             return s;
         }
@@ -44,7 +65,7 @@ namespace TjuvPolis2
             string s = "";
             foreach (Police police in p)
             {
-                s += $"Medborgare {x}: xdir: {police.XDirection}, ydir: {police.YDirection}, " +
+                s += $"Polis {x}: xdir: {police.XDirection}, ydir: {police.YDirection}, " +
                     $"xpos: {police.XPosition}, ypos: {police.YPosition}, ";
 
                 for (int i = 0; i < police.ConfiscatedItems.Count; i++)
@@ -62,7 +83,7 @@ namespace TjuvPolis2
             string s = "";
             foreach (Thief police in t)
             {
-                s += $"Medborgare {x}: xdir: {police.XDirection}, ydir: {police.YDirection}, " +
+                s += $"Tjuv {x}: xdir: {police.XDirection}, ydir: {police.YDirection}, " +
                     $"xpos: {police.XPosition}, ypos: {police.YPosition}, ";
 
                 for (int i = 0; i < police.Swag.Count; i++)
