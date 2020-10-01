@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace TjuvPolis2
 {
     class Person
@@ -37,11 +38,23 @@ namespace TjuvPolis2
     }
     class Thief : Person
     {
+        public int IdNumber { get; set; }
         public List<Item> Swag { get; set; }
-        public Thief(int xPosition, int yPosition, int xDirection, int yDirection, List<Item> swag) :
+        public bool IsInPrison { get; set; }
+        public DateTime  TimeOfCapture { get; set; }
+        public double TimeInPrison { get; set; }
+        //public DateTime TimeOfRelease { get; set; }
+
+        public Thief(int idNumber, int xPosition, int yPosition, int xDirection, int yDirection, List<Item> swag, bool isInPrison, DateTime timeOfCapture, 
+            double timeInPrison/*, DateTime timeOfRelease*/) :
             base(xPosition, yPosition, xDirection, yDirection)
         {
+            IdNumber = idNumber;
             Swag = swag;
+            IsInPrison = isInPrison;
+            TimeOfCapture = timeOfCapture;
+            TimeInPrison = timeInPrison;
+            //TimeOfRelease = timeOfRelease;
         }
     }
 }

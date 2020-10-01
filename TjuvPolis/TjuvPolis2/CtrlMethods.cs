@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Timers;
 
 namespace TjuvPolis2
 {
@@ -79,21 +81,28 @@ namespace TjuvPolis2
         }
         public static string PrintThiefList(List<Thief> t)
         {
-            int x = 1;
+            //int x = 1;
             string s = "";
-            foreach (Thief police in t)
+            foreach (Thief thief in t)
             {
-                s += $"Tjuv {x}: xdir: {police.XDirection}, ydir: {police.YDirection}, " +
-                    $"xpos: {police.XPosition}, ypos: {police.YPosition}, ";
+                s += $"Tjuv {thief.IdNumber}: xdir: {thief.XDirection}, ydir: {thief.YDirection}, " +
+                    $"xpos: {thief.XPosition}, ypos: {thief.YPosition}, fängelse: {thief.IsInPrison}, ";
 
-                for (int i = 0; i < police.Swag.Count; i++)
+                for (int i = 0; i < thief.Swag.Count; i++)
                 {
-                    s += $"{police.Swag[i]}, ";
+                    s += $"{thief.Swag[i]}, ";
                 }
                 s += "\n";
-                x++;
+                //x++;
             }
             return s;
+        }
+        public static void StartTimer()
+        {
+            System.Timers.Timer timer = new System.Timers.Timer();
+            
+            Console.WriteLine($"Starttid: {DateTime.Now}");
+
         }
     }
 }
